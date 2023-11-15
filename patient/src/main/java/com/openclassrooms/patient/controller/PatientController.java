@@ -3,14 +3,13 @@ package com.openclassrooms.patient.controller;
 import com.openclassrooms.patient.model.Patient;
 import com.openclassrooms.patient.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping
 public class PatientController {
 
     @Autowired

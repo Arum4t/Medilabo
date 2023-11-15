@@ -29,10 +29,6 @@ public class PatientService implements IPatientService{
     //create
     @Override
     public Patient addPatient(Patient patient){
-        if(getOnePatient(patient.getPatientListId()).isPresent()){
-            logger.info("Request add Patient failed");
-        }
-        logger.info("Request add Patient successful");
         return patientRepository.save(patient);
     }
     //update
