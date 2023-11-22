@@ -15,6 +15,7 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
 
+    @CrossOrigin
     @GetMapping("/patients")
     public List<Patient> getAllPatients(){
         return patientService.getAllPatient();
