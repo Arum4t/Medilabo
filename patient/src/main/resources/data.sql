@@ -16,6 +16,7 @@ PRIMARY KEY (patient_list_id)
 
 INSERT INTO patient_list(patient_list_id, first_name, last_name, birthdate, gender, address, phone_number)
 VALUES
-("1", "peverell", "trépanier", "1991-10-11", "homme", "5 rue des Nations Unies, 93200 SAINT-DENIS", "0170965707"),
-("2", "artus", "dufresne", "1956-10-25", "homme", "33, rue de Penthièvre, 95000 PONTOISE", "0379480745"),
-("3", "cinderella", "labossière", "1942-10-31", "femme", "37, rue Pierre De Coubertin, 31300 TOULOUSE", "0580495499");
+("1", "TestNone", "Test", "1966-12-31", "F", "1 Brookside St ", "100-222-3333"),
+("2", "TestBorderline", "Test", "1945-06-24", "M", "2 High St ", "200-333-4444"),
+("3", "TestBorderline", "Test", "2004-06-18", "M", "3 Club Road ", "300-444-5555"),
+("4", "TestEarlyOnset", "Test", "2002-06-28", "F", "4 Valley Dr", "400-555-6666");
