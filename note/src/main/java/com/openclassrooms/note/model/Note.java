@@ -1,5 +1,6 @@
 package com.openclassrooms.note.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,9 +10,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Note {
 
     @Id
+    @JsonIgnore
     private String id;
 
-    private String patId;
+    private Integer patId;
 
     private String patient;
 
