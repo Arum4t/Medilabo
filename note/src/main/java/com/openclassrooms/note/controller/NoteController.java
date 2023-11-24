@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class NoteController {
@@ -19,10 +20,15 @@ public class NoteController {
     }
     @GetMapping("/notes/{patId}")
     public List<Note> getPatientNotes(@PathVariable Integer patId){
-        return noteService.getPatientNote(patId);
+        return noteService.getPatientNotesFullInfo(patId);
     }
     @PostMapping("/notes")
     public Note addNote(@RequestBody Note note){
         return noteService.addNote(note);
+    }
+    @CrossOrigin
+    @GetMapping("/notes/sort")
+    public Map<Integer, List<String>> getAllNoteSortByPatientId(){
+        return noteService.getAllNoteSortByPatientId();
     }
 }

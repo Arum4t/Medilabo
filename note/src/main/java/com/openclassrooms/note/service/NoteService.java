@@ -5,9 +5,7 @@ import com.openclassrooms.note.repository.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.logging.Logger;
 
 @Service
@@ -21,7 +19,7 @@ public class NoteService implements INoteService{
         return noteRepository.findAll();
     }
     @Override
-    public List<Note> getPatientNote(Integer patId) {
+    public List<Note> getPatientNotesFullInfo(Integer patId) {
         List<Note> allNotes = noteRepository.findAll();
         List<Note> patientNotes = new ArrayList<>();
 
@@ -31,6 +29,27 @@ public class NoteService implements INoteService{
             }
         }
         return patientNotes;
+    }
+    @Override
+    public List<String> getPatientNotes(Integer patId) {
+        List<Note> allNotes = noteRepository.findAll();
+        List<String> patientNotes = new ArrayList<>();
+
+        for(Note notes : allNotes){
+            if(Objects.equals(notes.getPatId(), patId)){
+                patientNotes.add(notes.getNote());
+            }
+        }
+        return patientNotes;
+    }
+    @Override
+    public Map<Integer, List<String>> getAllNoteSortByPatientId(){
+        Map<Integer, List<String>> finalNote = new HashMap<>();
+        List<Note> allNotes = noteRepository.findAll();
+        for(Note notes : allNotes){
+            finalNote.put(notes.getPatId(), getPatientNotes(notes.getPatId()));
+            }
+        return finalNote;
     }
     @Override
     public Note addNote(Note note) {

@@ -31,6 +31,6 @@ public class Patient {
     private String address;
 
     @Column(name = "phone_number")
-    private Integer phoneNumber;
+    private String phoneNumber;
 
 }
