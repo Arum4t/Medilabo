@@ -10,7 +10,7 @@ last_name VARCHAR(100) NOT NULL,
 birthdate DATE NOT NULL,
 gender VARCHAR(100) NOT NULL,
 address VARCHAR(100),
-phone_number int(10),
+phone_number VARCHAR(12),
 PRIMARY KEY (patient_list_id)
 );
 
