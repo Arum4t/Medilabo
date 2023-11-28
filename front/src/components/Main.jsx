@@ -11,7 +11,7 @@ function Main() {
   }, []);
 
   const getPatients = async () => {
-    const todo = await axios.get("http://localhost:8080/patients");
+    const todo = await axios.get("http://localhost:9101/patients");
     setPatientDatas(todo.data);
   };
 
@@ -21,7 +21,7 @@ function Main() {
   }, []);
 
   const getNotes = async () => {
-    const todo2 = await axios.get("http://localhost:8081/notes/sort");
+    const todo2 = await axios.get("http://localhost:9101/notes/sort");
     setNoteDatas(todo2.data);
   };
 
