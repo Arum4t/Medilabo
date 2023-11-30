@@ -2,15 +2,18 @@ package com.openclassrooms.risque.beans;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class PatientBean {
     private Integer patientListId;
     private String firstName;
     private String lastName;
-    private Date birthdate;
+    private LocalDate birthdate;
     private String gender;
     private String address;
     private String phoneNumber;
+
+    private Integer age;
+    private String riskLevel;
 }

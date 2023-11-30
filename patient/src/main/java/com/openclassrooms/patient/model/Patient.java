@@ -3,7 +3,7 @@ package com.openclassrooms.patient.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -22,7 +22,7 @@ public class Patient {
     private String lastName;
 
     @Column(name = "birthdate")
-    private Date birthdate;
+    private LocalDate birthdate;
 
     @Column(name = "gender")
     private String gender;
