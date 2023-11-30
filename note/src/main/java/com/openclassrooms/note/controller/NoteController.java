@@ -19,8 +19,8 @@ public class NoteController {
         return noteService.getAllNote();
     }
     @GetMapping("/notes/{patId}")
-    public List<Note> getPatientNotes(@PathVariable Integer patId){
-        return noteService.getPatientNotesFullInfo(patId);
+    public List<String> getPatientNotes(@PathVariable Integer patId){
+        return noteService.getPatientNotes(patId);
     }
     // A modifier pour ajouter une note à un patId
     @PostMapping("/notes")

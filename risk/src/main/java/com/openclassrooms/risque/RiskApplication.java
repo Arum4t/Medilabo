@@ -8,10 +8,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-public class RisqueApplication {
+public class RiskApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RisqueApplication.class, args);
+		SpringApplication.run(RiskApplication.class, args);
 	}
 
 }

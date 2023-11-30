@@ -14,6 +14,6 @@ public class PatientBean {
     private String address;
     private String phoneNumber;
 
+    //test
     private Integer age;
-    private String riskLevel;
 }
