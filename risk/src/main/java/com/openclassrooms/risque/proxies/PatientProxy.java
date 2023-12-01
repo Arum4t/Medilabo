@@ -13,7 +13,7 @@ public interface PatientProxy {
     @GetMapping (value = "/patients")
     List<PatientBean> listDesPatients();
 
-    @GetMapping(value = "/patients/{id}")
-    PatientBean onePatient(@PathVariable Integer patId);
+    @GetMapping(value = "/patients/{patId}")
+    PatientBean getOnePatient(@PathVariable Integer patId);
 
 }

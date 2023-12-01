@@ -23,56 +23,55 @@ public class RiskService {
         this.patientProxy = patientProxy;
         this.noteProxy = noteProxy;
     }
-
-    public List<Risk> setRiskLevel(){
-        List<PatientBean> listAllPatient = patientProxy.listDesPatients();
+    public List<Risk> setRiskLevel(Integer patId) {
+        PatientBean patient = patientProxy.getOnePatient(patId);
         List<Risk> listAllRisk = new ArrayList<>();
 
-        for(PatientBean patients : listAllPatient){
-            Risk risk = new Risk();
-            risk.setPatId(patients.getPatientListId());
+        Risk risk = new Risk();
+        risk.setPatId(patient.getPatientListId());
 
-            LocalDate birthdate = patients.getBirthdate();
-            LocalDate currentDate = LocalDate.now();
-            Integer patientAge = Period.between(birthdate,currentDate).getYears();
-            risk.setAge(patientAge);
+        LocalDate birthdate = patient.getBirthdate();
+        LocalDate currentDate = LocalDate.now();
+        Integer patientAge = Period.between(birthdate, currentDate).getYears();
+        risk.setAge(patientAge);
 
-            List<String> patientNote = noteProxy.listDesNotes(patients.getPatientListId());
+        List<String> patientNote = noteProxy.listDesNotes(patId);
 
-            String[] triggerWords = {"Poids", "Taille", "Anticorps", "Cholestérol", "Réaction", "Rechute", "Anormal",
-                    "Hémoglobine A1C", "Microalbumine", "Fumeur", "Fumeuse", "Vertiges"};
+        String[] triggerWords = {"Poids", "Taille", "Anticorps", "Cholestérol", "Réaction", "Rechute", "Anormal",
+                "Hémoglobine A1C", "Microalbumine", "Fumeur", "Fumeuse", "Vertiges"};
 
-            int trigger = 0;
+        int trigger = 0;
 
-            for (String chain : patientNote) {
-                for (String word : triggerWords) {
-                    if (chain.toLowerCase().contains(word.toLowerCase())) {
-                        trigger++;
-                    }
+        for (String chain : patientNote) {
+            for (String word : triggerWords) {
+                if (chain.toLowerCase().contains(word.toLowerCase())) {
+                    trigger++;
                 }
             }
-            risk.setTrigger(trigger);
+        }
+        risk.setTrigger(trigger);
 
-            int triggerCount = risk.getTrigger();
-            int age = risk.getAge();
-            String gender = patients.getGender();
+        int triggerCount = risk.getTrigger();
+        int age = risk.getAge();
+        String gender = patient.getGender();
 
-            if (triggerCount == 0 || triggerCount == 1) {
-                risk.setRisk("none");
-            } else if ((triggerCount >= 2 && triggerCount <= 5 && age > 30) ||
-                    (triggerCount == 6 || triggerCount == 7) && age > 30) {
-                risk.setRisk("in Danger");
-            } else if ((Objects.equals(gender, "M") && triggerCount == 3) ||
-                    (Objects.equals(gender, "F") && triggerCount == 4)) {
-                risk.setRisk("in Danger");
-            } else if ((Objects.equals(gender, "M") && triggerCount == 5) ||
-                    (Objects.equals(gender, "F") && triggerCount == 7) ||
-                    (triggerCount > 8 && age > 30)) {
-                risk.setRisk("Early onset");
-            }
+        if (triggerCount == 0 || triggerCount == 1) {
+            risk.setRisk("none");
+        } else if ((triggerCount >= 2 && triggerCount <= 5 && age > 30) ||
+                (triggerCount == 6 || triggerCount == 7) && age > 30) {
+            risk.setRisk("in Danger");
+        } else if ((Objects.equals(gender, "M") && triggerCount == 3) ||
+                (Objects.equals(gender, "F") && triggerCount == 4)) {
+            risk.setRisk("in Danger");
+        } else if ((Objects.equals(gender, "M") && triggerCount == 5) ||
+                (Objects.equals(gender, "F") && triggerCount == 7) ||
+                (triggerCount > 8 && age > 30)) {
+            risk.setRisk("Early onset");
+        }
 
         listAllRisk.add(risk);
-        }
+
         return listAllRisk;
+
     }
 }
