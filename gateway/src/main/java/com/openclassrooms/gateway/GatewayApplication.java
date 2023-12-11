@@ -12,21 +12,22 @@ public class GatewayApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GatewayApplication.class, args);
 	}
+
 	@Bean
 	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
 		return builder.routes()
-				/*.route("path_route", r -> r.path("/patients")
-						.uri("http://localhost:8080/patients"))
-				.route("path_route", r -> r.path("/notes/sort")
-						.uri("http://localhost:8081/notes/sort"))
-				.route("path_route", r -> r.path("/notes")
-						.uri("http://localhost:8080/notes"))*/
-				.route("path_route", r -> r.path("/risks")
-						.uri("http://localhost:8080/risks/{patId}"))
-				.route("path_route", r -> r.path("/notes")
-						.uri("http://localhost:8080/notes/{patId}"))
 				.route("path_route", r -> r.path("/patients")
-						.uri("http://localhost:8080/patients/{patId}"))
+						.uri("http://localhost:8080/patients"))
+				.route("path_route", r -> r.path("/notes")
+						.uri("http://localhost:8081/notes"))
+				.route("risks", r -> r.path("/risks")
+						.uri("http://localhost:8082/risks"))
+				.route("risksById", t -> t.path("/risks/**")
+						.filters(rw -> rw.rewritePath("/risks/(?<segment>.*)", "/risks/${segment}"))
+						.uri("http://localhost:8082/risks/"))
+				.route("notesById", t -> t.path("/notes/**")
+						.filters(rw -> rw.rewritePath("/notes/(?<segment>.*)", "/notes/${segment}"))
+						.uri("http://localhost:8081/notes/"))
 				.build();
 	}
 
