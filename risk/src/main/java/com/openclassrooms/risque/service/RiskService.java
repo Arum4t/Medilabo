@@ -57,15 +57,16 @@ public class RiskService {
 
         if (triggerCount == 0 || triggerCount == 1) {
             risk.setRisk("none");
-        } else if ((triggerCount >= 2 && triggerCount <= 5 && age > 30) ||
-                (triggerCount == 6 || triggerCount == 7) && age > 30) {
+        }else if(triggerCount >= 2 && triggerCount <= 5 && age > 30){
+            risk.setRisk("Borderline");
+        }else if ((triggerCount == 6 || triggerCount == 7) && age > 30) {
             risk.setRisk("in Danger");
-        } else if ((Objects.equals(gender, "M") && triggerCount == 3) ||
-                (Objects.equals(gender, "F") && triggerCount == 4)) {
+        } else if ((Objects.equals(gender, "M") && triggerCount == 3 && age < 30) ||
+                (Objects.equals(gender, "F") && triggerCount == 4 && age < 30)) {
             risk.setRisk("in Danger");
-        } else if ((Objects.equals(gender, "M") && triggerCount == 5) ||
-                (Objects.equals(gender, "F") && triggerCount == 7) ||
-                (triggerCount > 8 && age > 30)) {
+        } else if ((Objects.equals(gender, "M") && triggerCount == 5 && age < 30) ||
+                (Objects.equals(gender, "F") && triggerCount == 7 && age < 30) ||
+                (triggerCount >= 8 && age > 30)) {
             risk.setRisk("Early onset");
         }
 

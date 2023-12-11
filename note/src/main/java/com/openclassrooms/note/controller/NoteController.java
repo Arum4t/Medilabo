@@ -22,11 +22,12 @@ public class NoteController {
     public List<String> getPatientNotes(@PathVariable Integer patId){
         return noteService.getPatientNotes(patId);
     }
-    // A modifier pour ajouter une note à un patId
     @PostMapping("/notes")
     public Note addNote(@RequestBody Note note){
         return noteService.addNote(note);
     }
+
+    // A supprimer
     @CrossOrigin
     @GetMapping("/notes/sort")
     public Map<Integer, List<String>> getAllNoteSortByPatientId(){

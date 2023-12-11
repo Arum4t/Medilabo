@@ -24,6 +24,8 @@ public class PatientController {
     public Optional<Patient> getOnePatient(@PathVariable Integer id){
         return patientService.getOnePatient(id);
     }
+    // a delete
+    @CrossOrigin
     @PostMapping("/patients")
     public Patient addOnePatient(@RequestBody Patient patient){
         return patientService.addPatient(patient);
