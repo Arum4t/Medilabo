@@ -1,16 +1,23 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
-import Header from "./components/Header";
-import Main from "./components/Main";
+import Main from "./pages/Main";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Add from "./pages/Add";
+import Details from "./pages/Details";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Header />
-      <Main />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/add" element={<Add />} />
+        <Route path="/details">
+          <Route path=":id" element={<Details />} />
+        </Route>
+        <Route path="*" element={<Main />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

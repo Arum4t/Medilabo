@@ -6,36 +6,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useEffect, useState } from "react";
-import moment from "moment";
+import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
-export default function TablePatient({ patientDatas, noteDatas }) {
+export default function TablePatient({ patientDatas }) {
   useEffect(() => {}, [patientDatas]);
-  useEffect(() => {}, [noteDatas]);
 
-  const addPatientNotes = (data) => {
-    const noteContainer = data.map((patient) => {
-      return { ...patient, note: [] };
-    });
-    return noteContainer;
-  };
-
-  const setPatientNotes = (pDatas, nDatas) => {
-    if (pDatas) {
-      const newPatientDatas = addPatientNotes(pDatas);
-
-      newPatientDatas.map((patient) => {
-        for (let note in nDatas) {
-          if (Number(note) === patient.patientListId) {
-            patient.note = nDatas[note];
-          }
-        }
-      });
-      return newPatientDatas;
-    }
-  };
-
-  const rows = setPatientNotes(patientDatas, noteDatas);
+  const rows = patientDatas;
 
   return (
     <TableContainer component={Paper}>
@@ -48,13 +25,15 @@ export default function TablePatient({ patientDatas, noteDatas }) {
             <TableCell>gender</TableCell>
             <TableCell>address</TableCell>
             <TableCell>phoneNumber</TableCell>
-            <TableCell>note</TableCell>
+            <TableCell>Details</TableCell>
+            <TableCell>Modify</TableCell>
+            <TableCell>Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow
-              key={row.name}
+              key={row.patientListId}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
@@ -66,9 +45,7 @@ export default function TablePatient({ patientDatas, noteDatas }) {
               <TableCell>{row.address}</TableCell>
               <TableCell>{row.phoneNumber}</TableCell>
               <TableCell>
-                {row.note.map((n) => (
-                  <p>- {n}</p>
-                ))}
+                <NavLink to={"/details/" + row.patientListId}>Details</NavLink>
               </TableCell>
             </TableRow>
           ))}
