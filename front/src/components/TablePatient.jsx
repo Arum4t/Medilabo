@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import ButtonDeletePatient from "./ButtonDeletePatient";
 
 export default function TablePatient({ patientDatas }) {
   useEffect(() => {}, [patientDatas]);
@@ -46,6 +47,19 @@ export default function TablePatient({ patientDatas }) {
               <TableCell>{row.phoneNumber}</TableCell>
               <TableCell>
                 <NavLink to={"/details/" + row.patientListId}>Details</NavLink>
+              </TableCell>
+              <TableCell>
+                <NavLink
+                  to={{
+                    pathname: "/modify/" + row.patientListId,
+                  }}
+                  state={{ from: row }}
+                >
+                  Modify
+                </NavLink>
+              </TableCell>
+              <TableCell>
+                <ButtonDeletePatient id={row.patientListId} />
               </TableCell>
             </TableRow>
           ))}

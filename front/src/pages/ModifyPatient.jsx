@@ -2,10 +2,15 @@ import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import ButtonBackHome from "../components/ButtonBackHome";
+import { useParams } from "react-router-dom";
 
-const Add = () => {
-  const [state, setState] = useState({
+const ModifyPatient = () => {
+  const location = useLocation();
+  const { state } = location;
+
+  const [states, setStates] = useState({
     firstName: "",
     lastName: "",
     birthdate: "",
@@ -14,12 +19,14 @@ const Add = () => {
     phoneNumber: "",
   });
 
+  const patId = useParams();
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const value = e.target.value;
-    setState({
-      ...state,
+    setStates({
+      ...states,
       [e.target.name]: value,
     });
   };
@@ -27,16 +34,14 @@ const Add = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const userData = {
-      firstName: state.firstName,
-      lastName: state.lastName,
-      birthdate: state.birthdate,
-      gender: state.gender,
-      address: state.address,
-      phoneNumber: state.phoneNumber,
+      firstName: states.firstName,
+      lastName: states.lastName,
+      birthdate: states.birthdate,
+      gender: states.gender,
+      address: states.address,
+      phoneNumber: states.phoneNumber,
     };
-    axios.post("/patients", userData).then((response) => {
-      console.log(response.status, response.data);
-    });
+    axios.put("/patients/" + patId.id, userData);
     navigate("/");
   };
 
@@ -49,49 +54,50 @@ const Add = () => {
           <input
             type="text"
             name="firstName"
-            value={state.firstName}
+            defaultValue={state.firstName}
             onChange={handleChange}
           />
           LastName
           <input
             type="text"
             name="lastName"
-            value={state.lastName}
+            value={states.lastName}
             onChange={handleChange}
           />
           birthdate
           <input
             type="date"
             name="birthdate"
-            value={state.birthdate}
+            value={states.birthdate}
             onChange={handleChange}
           />
           gender
           <input
             type="text"
             name="gender"
-            value={state.gender}
+            value={states.gender}
             onChange={handleChange}
           />
           address
           <input
             type="text"
             name="address"
-            value={state.address}
+            value={states.address}
             onChange={handleChange}
           />
           phoneNumber
           <input
             type="text"
             name="phoneNumber"
-            value={state.phoneNumber}
+            value={states.phoneNumber}
             onChange={handleChange}
           />
         </label>
         <button type="submit">Add</button>
+        <ButtonBackHome />
       </form>
     </div>
   );
 };
 
-export default Add;
+export default ModifyPatient;

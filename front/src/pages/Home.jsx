@@ -5,7 +5,7 @@ import axios from "axios";
 import ButtonAddPatient from "../components/ButtonAddPatient";
 import Header from "../components/Header";
 
-function Main() {
+function Home() {
   const [patientDatas, setPatientDatas] = useState([]);
 
   useEffect(() => {
@@ -27,4 +27,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Home;
