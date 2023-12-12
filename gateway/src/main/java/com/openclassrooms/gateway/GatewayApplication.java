@@ -18,16 +18,15 @@ public class GatewayApplication {
 		return builder.routes()
 				.route("path_route", r -> r.path("/patients")
 						.uri("http://localhost:8080/patients"))
-				.route("path_route", r -> r.path("/notes")
-						.uri("http://localhost:8081/notes"))
-				.route("risks", r -> r.path("/risks")
-						.uri("http://localhost:8082/risks"))
 				.route("risksById", t -> t.path("/risks/**")
 						.filters(rw -> rw.rewritePath("/risks/(?<segment>.*)", "/risks/${segment}"))
 						.uri("http://localhost:8082/risks/"))
 				.route("notesById", t -> t.path("/notes/**")
 						.filters(rw -> rw.rewritePath("/notes/(?<segment>.*)", "/notes/${segment}"))
 						.uri("http://localhost:8081/notes/"))
+				.route("patientById", t -> t.path("/patients/**")
+						.filters(rw -> rw.rewritePath("/patients/(?<segment>.*)", "/patients/${segment}"))
+						.uri("http://localhost:8080/patients/"))
 				.build();
 	}
 

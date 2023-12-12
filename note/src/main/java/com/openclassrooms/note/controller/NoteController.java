@@ -27,10 +27,4 @@ public class NoteController {
         return noteService.addNote(note);
     }
 
-    // A supprimer
-    @CrossOrigin
-    @GetMapping("/notes/sort")
-    public Map<Integer, List<String>> getAllNoteSortByPatientId(){
-        return noteService.getAllNoteSortByPatientId();
-    }
 }

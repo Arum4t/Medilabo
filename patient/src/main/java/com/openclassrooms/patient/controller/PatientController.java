@@ -15,7 +15,6 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
 
-    @CrossOrigin
     @GetMapping("/patients")
     public List<Patient> getAllPatients(){
         return patientService.getAllPatient();
@@ -24,8 +23,7 @@ public class PatientController {
     public Optional<Patient> getOnePatient(@PathVariable Integer id){
         return patientService.getOnePatient(id);
     }
-    // a delete
-    @CrossOrigin
+
     @PostMapping("/patients")
     public Patient addOnePatient(@RequestBody Patient patient){
         return patientService.addPatient(patient);
