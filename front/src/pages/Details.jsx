@@ -2,9 +2,9 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import ButtonBackHome from "../components/ButtonBackHome";
 import TablePatientDetails from "../components/TablePatientDetails";
 import ButtonAddNote from "../components/ButtonAddNote";
+import ButtonBackHome from "../components/ButtonBackHome";
 
 const Details = () => {
   const [risksDatas, setRisksDatas] = useState([]);

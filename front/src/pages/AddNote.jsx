@@ -3,15 +3,17 @@ import React from "react";
 import axios from "axios";
 import Header from "../components/Header";
 import { NavLink, useNavigate } from "react-router-dom";
-import ButtonBackHome from "../components/ButtonBackHome";
 import { useParams } from "react-router-dom";
+import ButtonBackDetails from "../components/ButtonBackDetails";
 
 const AddNote = () => {
   const [state, setState] = useState({
+    patId: "",
+    patient: "",
     note: "",
   });
 
-  const patId = useParams();
+  const patientId = useParams();
 
   const navigate = useNavigate();
 
@@ -26,12 +28,14 @@ const AddNote = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const noteData = {
+      patId: patientId.id,
+      patient: "",
       note: state.note,
     };
-    axios.post("/notes/" + patId.id, noteData).then((response) => {
+    axios.post("/notes", noteData).then((response) => {
       console.log(response.status, response.data);
     });
-    navigate("/details/" + patId.id);
+    navigate("/details/" + patientId.id);
   };
 
   return (
@@ -48,7 +52,7 @@ const AddNote = () => {
           />
         </label>
         <button type="submit">Add</button>
-        <ButtonBackHome />
+        <ButtonBackDetails id={patientId.id} />
       </form>
     </div>
   );
