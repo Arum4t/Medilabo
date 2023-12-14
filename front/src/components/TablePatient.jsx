@@ -53,7 +53,7 @@ export default function TablePatient({ patientDatas }) {
                   to={{
                     pathname: "/modify/" + row.patientListId,
                   }}
-                  state={{ from: row }}
+                  state={{ row }}
                 >
                   Modify
                 </NavLink>

@@ -4,7 +4,7 @@ import axios from "axios";
 import Header from "../components/Header";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import ButtonBackDetails from "../components/ButtonBackDetails";
+import ButtonBack from "../components/ButtonBack";
 
 const AddNote = () => {
   const [state, setState] = useState({
@@ -52,7 +52,11 @@ const AddNote = () => {
           />
         </label>
         <button type="submit">Add</button>
-        <ButtonBackDetails id={patientId.id} />
+        <ButtonBack
+          id={patientId.id}
+          route="/details/"
+          text="back to details"
+        />
       </form>
     </div>
   );

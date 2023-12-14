@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import TablePatientDetails from "../components/TablePatientDetails";
-import ButtonAddNote from "../components/ButtonAddNote";
-import ButtonBackHome from "../components/ButtonBackHome";
+import ButtonAdd from "../components/ButtonAdd";
+import ButtonBack from "../components/ButtonBack";
 
 const Details = () => {
   const [risksDatas, setRisksDatas] = useState([]);
@@ -30,9 +30,9 @@ const Details = () => {
   useEffect(() => {}, [risksDatas, notesDatas]);
   return (
     <div>
-      <ButtonAddNote id={patId.id} />
+      <ButtonAdd id={patId.id} route="/addNote/" text="Add a note" />
       <TablePatientDetails risksDatas={risksDatas} notesDatas={notesDatas} />
-      <ButtonBackHome />
+      <ButtonBack id="" route="/" text="Back" />
     </div>
   );
 };

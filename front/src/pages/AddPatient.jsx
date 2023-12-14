@@ -3,7 +3,7 @@ import React from "react";
 import axios from "axios";
 import Header from "../components/Header";
 import { NavLink, useNavigate } from "react-router-dom";
-import ButtonBackHome from "../components/ButtonBackHome";
+import ButtonBack from "../components/ButtonBack";
 
 const AddPatient = () => {
   const [state, setState] = useState({
@@ -90,7 +90,7 @@ const AddPatient = () => {
           />
         </label>
         <button type="submit">Add</button>
-        <ButtonBackHome />
+        <ButtonBack id="" route="/" text="back" />
       </form>
     </div>
   );

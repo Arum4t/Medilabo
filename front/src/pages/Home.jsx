@@ -2,7 +2,7 @@ import React from "react";
 import TablePatient from "../components/TablePatient";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ButtonAddPatient from "../components/ButtonAddPatient";
+import ButtonAdd from "../components/ButtonAdd";
 import Header from "../components/Header";
 
 function Home() {
@@ -20,7 +20,7 @@ function Home() {
   return (
     <div>
       <Header />
-      <ButtonAddPatient />
+      <ButtonAdd id="" route="/addPatient" text="Add a patient" />
       <TablePatient patientDatas={patientDatas} />
       <div></div>
     </div>
