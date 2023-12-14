@@ -7,15 +7,26 @@ import { useParams } from "react-router-dom";
 import ButtonBack from "../components/ButtonBack";
 
 const AddNote = () => {
+  const patientId = useParams();
+
+  const navigate = useNavigate();
+
+  const [patientDatas, setPatientDatas] = useState([]);
+
+  useEffect(() => {
+    getPatients();
+  }, []);
+
+  const getPatients = async () => {
+    const todo = await axios.get("/patients/" + patientId.id);
+    setPatientDatas(todo.data);
+  };
+
   const [state, setState] = useState({
     patId: "",
     patient: "",
     note: "",
   });
-
-  const patientId = useParams();
-
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -29,7 +40,7 @@ const AddNote = () => {
     e.preventDefault();
     const noteData = {
       patId: patientId.id,
-      patient: "",
+      patient: patientDatas.firstName,
       note: state.note,
     };
     axios.post("/notes", noteData).then((response) => {

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import TablePatientDetails from "../components/TablePatientDetails";
 import ButtonAdd from "../components/ButtonAdd";
 import ButtonBack from "../components/ButtonBack";
+import Header from "../components/Header";
 
 const Details = () => {
   const [risksDatas, setRisksDatas] = useState([]);
@@ -30,6 +31,7 @@ const Details = () => {
   useEffect(() => {}, [risksDatas, notesDatas]);
   return (
     <div>
+      <Header />
       <ButtonAdd id={patId.id} route="/addNote/" text="Add a note" />
       <TablePatientDetails risksDatas={risksDatas} notesDatas={notesDatas} />
       <ButtonBack id="" route="/" text="Back" />

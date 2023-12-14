@@ -6,6 +6,7 @@ import AddPatient from "./pages/AddPatient";
 import AddNote from "./pages/AddNote";
 import Details from "./pages/Details";
 import ModifyPatient from "./pages/ModifyPatient";
+import "./styles/Home.css";
 
 const App = () => {
   return (

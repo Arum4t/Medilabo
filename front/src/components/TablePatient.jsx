@@ -129,7 +129,7 @@ export default function TablePatient({ patientDatas }) {
 
   useEffect(() => {}, [patientDatas]);
   return (
-    <TableContainer component={Paper}>
+    <TableContainer className="tablePatient" component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="custom pagination table">
         <TableHead>
           <TableRow>
