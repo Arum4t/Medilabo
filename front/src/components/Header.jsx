@@ -1,7 +1,7 @@
 import React from "react";
 
 function Header() {
-  return <h1>Medilabo</h1>;
+  return <img src="images/medilabo_logo.png" alt="logo" />;
 }
 
 export default Header;
