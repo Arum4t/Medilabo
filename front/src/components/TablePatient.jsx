@@ -19,8 +19,6 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import { TableHead } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import { tableCellClasses } from "@mui/material/TableCell";
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -90,26 +88,6 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
-
 export default function TablePatient({ patientDatas }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -130,18 +108,25 @@ export default function TablePatient({ patientDatas }) {
   useEffect(() => {}, [patientDatas]);
   return (
     <TableContainer className="tablePatient" component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="custom pagination table">
+      <Table
+        sx={{
+          minWidth: 500,
+          maxWidth: 3 / 4,
+          mx: "auto",
+        }}
+        aria-label="custom pagination table"
+      >
         <TableHead>
           <TableRow>
-            <StyledTableCell> LastName</StyledTableCell>
-            <StyledTableCell align="center">FirstName</StyledTableCell>
-            <StyledTableCell align="center">birthdate</StyledTableCell>
-            <StyledTableCell align="center">gender</StyledTableCell>
-            <StyledTableCell align="center">address</StyledTableCell>
-            <StyledTableCell align="center">phoneNumber</StyledTableCell>
-            <StyledTableCell align="center">Details</StyledTableCell>
-            <StyledTableCell align="center">Modify</StyledTableCell>
-            <StyledTableCell align="center">Delete</StyledTableCell>
+            <TableCell> LastName</TableCell>
+            <TableCell align="center">FirstName</TableCell>
+            <TableCell align="center">birthdate</TableCell>
+            <TableCell align="center">gender</TableCell>
+            <TableCell align="center">address</TableCell>
+            <TableCell align="center">phoneNumber</TableCell>
+            <TableCell align="center">Details</TableCell>
+            <TableCell align="center">Modify</TableCell>
+            <TableCell align="center">Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -149,29 +134,29 @@ export default function TablePatient({ patientDatas }) {
             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : rows
           ).map((row) => (
-            <StyledTableRow key={row.patientListId}>
+            <TableRow key={row.patientListId}>
               <TableCell component="th" scope="row">
                 {row.lastName}
               </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
+              <TableCell style={{ width: 160 }} align="center">
                 {row.firstName}
               </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
+              <TableCell style={{ width: 160 }} align="center">
                 {row.birthdate}
               </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
+              <TableCell style={{ width: 160 }} align="center">
                 {row.gender}
               </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
+              <TableCell style={{ width: 160 }} align="center">
                 {row.address}
               </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
+              <TableCell style={{ width: 160 }} align="center">
                 {row.phoneNumber}
               </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
+              <TableCell style={{ width: 160 }} align="center">
                 <NavLink to={"/details/" + row.patientListId}>Details</NavLink>
               </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
+              <TableCell style={{ width: 160 }} align="center">
                 <NavLink
                   to={{
                     pathname: "/modify/" + row.patientListId,
@@ -181,31 +166,24 @@ export default function TablePatient({ patientDatas }) {
                   Modify
                 </NavLink>
               </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
+              <TableCell style={{ width: 160 }} align="center">
                 <ButtonDeletePatient id={row.patientListId} />
               </TableCell>
-            </StyledTableRow>
+            </TableRow>
           ))}
-          {emptyRows > 0 && (
+          {/* {emptyRows > 0 && (
             <TableRow style={{ height: 53 * emptyRows }}>
               <TableCell colSpan={6} />
             </TableRow>
-          )}
+          )} */}
         </TableBody>
         <TableFooter>
           <TableRow>
             <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-              colSpan={3}
+              rowsPerPageOptions={[5, 10, 25]}
               count={rows.length}
               rowsPerPage={rowsPerPage}
               page={page}
-              SelectProps={{
-                inputProps: {
-                  "aria-label": "rows per page",
-                },
-                native: true,
-              }}
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
               ActionsComponent={TablePaginationActions}

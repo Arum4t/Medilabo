@@ -1,4 +1,18 @@
-.tablePatient {
-  width: 80%;
+.ButtonAdd {
+  display: block;
   margin: auto;
+}
+.logo {
+  margin: auto;
+}
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ButtonBack {
+  display: block;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
 }

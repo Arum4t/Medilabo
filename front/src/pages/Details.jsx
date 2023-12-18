@@ -31,8 +31,10 @@ const Details = () => {
   useEffect(() => {}, [risksDatas, notesDatas]);
   return (
     <div>
-      <Header />
-      <ButtonAdd id={patId.id} route="/addNote/" text="Add a note" />
+      <div className="headerBlock">
+        <Header />
+        <ButtonAdd id={patId.id} route="/addNote/" text="Add a note" />
+      </div>
       <TablePatientDetails risksDatas={risksDatas} notesDatas={notesDatas} />
       <ButtonBack id="" route="/" text="Back" />
     </div>

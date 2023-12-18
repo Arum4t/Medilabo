@@ -19,10 +19,11 @@ function Home() {
 
   return (
     <div>
-      <Header />
-      <ButtonAdd id="" route="/addPatient" text="Add a patient" />
+      <div className="headerBlock">
+        <Header />
+        <ButtonAdd id="" route="/addPatient" text="Add a patient" />
+      </div>
       <TablePatient patientDatas={patientDatas} />
-      <div></div>
     </div>
   );
 }
