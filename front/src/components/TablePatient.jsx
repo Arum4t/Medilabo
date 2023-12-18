@@ -119,11 +119,11 @@ export default function TablePatient({ patientDatas }) {
         <TableHead>
           <TableRow>
             <TableCell> LastName</TableCell>
-            <TableCell align="center">FirstName</TableCell>
-            <TableCell align="center">birthdate</TableCell>
-            <TableCell align="center">gender</TableCell>
-            <TableCell align="center">address</TableCell>
-            <TableCell align="center">phoneNumber</TableCell>
+            <TableCell>First name</TableCell>
+            <TableCell align="center">Birthdate</TableCell>
+            <TableCell align="center">Gender</TableCell>
+            <TableCell align="center">Address</TableCell>
+            <TableCell align="center">Phone number</TableCell>
             <TableCell align="center">Details</TableCell>
             <TableCell align="center">Modify</TableCell>
             <TableCell align="center">Delete</TableCell>
@@ -138,9 +138,7 @@ export default function TablePatient({ patientDatas }) {
               <TableCell component="th" scope="row">
                 {row.lastName}
               </TableCell>
-              <TableCell style={{ width: 160 }} align="center">
-                {row.firstName}
-              </TableCell>
+              <TableCell style={{ width: 160 }}>{row.firstName}</TableCell>
               <TableCell style={{ width: 160 }} align="center">
                 {row.birthdate}
               </TableCell>
@@ -154,10 +152,16 @@ export default function TablePatient({ patientDatas }) {
                 {row.phoneNumber}
               </TableCell>
               <TableCell style={{ width: 160 }} align="center">
-                <NavLink to={"/details/" + row.patientListId}>Details</NavLink>
+                <NavLink
+                  className={"buttonBlue"}
+                  to={"/details/" + row.patientListId}
+                >
+                  Details
+                </NavLink>
               </TableCell>
               <TableCell style={{ width: 160 }} align="center">
                 <NavLink
+                  className={"buttonBlue"}
                   to={{
                     pathname: "/modify/" + row.patientListId,
                   }}

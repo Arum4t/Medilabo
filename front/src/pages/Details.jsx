@@ -36,7 +36,10 @@ const Details = () => {
         <ButtonAdd id={patId.id} route="/addNote/" text="Add a note" />
       </div>
       <TablePatientDetails risksDatas={risksDatas} notesDatas={notesDatas} />
-      <ButtonBack id="" route="/" text="Back" />
+      <div className="footer">
+        {" "}
+        <ButtonBack id="" route="/" text="Back" />{" "}
+      </div>
     </div>
   );
 };

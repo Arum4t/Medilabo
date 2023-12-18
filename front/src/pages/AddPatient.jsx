@@ -43,55 +43,63 @@ const AddPatient = () => {
 
   return (
     <div>
-      <Header />
-      <form onSubmit={handleSubmit}>
-        <label>
-          firstName
-          <input
-            type="text"
-            name="firstName"
-            value={state.firstName}
-            onChange={handleChange}
-          />
-          LastName
-          <input
-            type="text"
-            name="lastName"
-            value={state.lastName}
-            onChange={handleChange}
-          />
-          birthdate
-          <input
-            type="date"
-            name="birthdate"
-            value={state.birthdate}
-            onChange={handleChange}
-          />
-          gender
-          <input
-            type="text"
-            name="gender"
-            value={state.gender}
-            onChange={handleChange}
-          />
-          address
-          <input
-            type="text"
-            name="address"
-            value={state.address}
-            onChange={handleChange}
-          />
-          phoneNumber
-          <input
-            type="text"
-            name="phoneNumber"
-            value={state.phoneNumber}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">Add</button>
-        <ButtonBack id="" route="/" text="back" />
-      </form>
+      <div className="headerBlock">
+        <Header />
+      </div>
+      <div className="inputPage">
+        <form onSubmit={handleSubmit}>
+          <label>
+            First name
+            <input
+              type="text"
+              name="firstName"
+              value={state.firstName}
+              onChange={handleChange}
+            />
+            Last name
+            <input
+              type="text"
+              name="lastName"
+              value={state.lastName}
+              onChange={handleChange}
+            />
+            Birthdate
+            <input
+              type="date"
+              name="birthdate"
+              value={state.birthdate}
+              onChange={handleChange}
+            />
+            Gender
+            <input
+              type="text"
+              name="gender"
+              value={state.gender}
+              onChange={handleChange}
+            />
+            Address
+            <input
+              type="text"
+              name="address"
+              value={state.address}
+              onChange={handleChange}
+            />
+            Phone number
+            <input
+              type="text"
+              name="phoneNumber"
+              value={state.phoneNumber}
+              onChange={handleChange}
+            />
+          </label>
+          <button className="buttonGreen inputAddButton" type="submit">
+            Add
+          </button>
+        </form>
+      </div>
+      <div className="footer">
+        <ButtonBack id="" route="/" text="Back" />
+      </div>
     </div>
   );
 };

@@ -38,55 +38,63 @@ const ModifyPatient = () => {
   };
   return (
     <div>
-      <Header />
-      <form onSubmit={handleSubmit}>
-        <label>
-          firstName
-          <input
-            type="text"
-            name="firstName"
-            value={stateDatas.firstName}
-            onChange={handleChange}
-          />
-          LastName
-          <input
-            type="text"
-            name="lastName"
-            value={stateDatas.lastName}
-            onChange={handleChange}
-          />
-          birthdate
-          <input
-            type="date"
-            name="birthdate"
-            value={stateDatas.birthdate}
-            onChange={handleChange}
-          />
-          gender
-          <input
-            type="text"
-            name="gender"
-            value={stateDatas.gender}
-            onChange={handleChange}
-          />
-          address
-          <input
-            type="text"
-            name="address"
-            value={stateDatas.address}
-            onChange={handleChange}
-          />
-          phoneNumber
-          <input
-            type="text"
-            name="phoneNumber"
-            value={stateDatas.phoneNumber}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">Modify</button>
+      <div className="headerBlock">
+        <Header />
+      </div>
+      <div className="inputPage">
+        <form onSubmit={handleSubmit}>
+          <label>
+            First name
+            <input
+              type="text"
+              name="firstName"
+              value={stateDatas.firstName}
+              onChange={handleChange}
+            />
+            Last name
+            <input
+              type="text"
+              name="lastName"
+              value={stateDatas.lastName}
+              onChange={handleChange}
+            />
+            Birthdate
+            <input
+              type="date"
+              name="birthdate"
+              value={stateDatas.birthdate}
+              onChange={handleChange}
+            />
+            Gender
+            <input
+              type="text"
+              name="gender"
+              value={stateDatas.gender}
+              onChange={handleChange}
+            />
+            Address
+            <input
+              type="text"
+              name="address"
+              value={stateDatas.address}
+              onChange={handleChange}
+            />
+            Phone number
+            <input
+              type="text"
+              name="phoneNumber"
+              value={stateDatas.phoneNumber}
+              onChange={handleChange}
+            />
+          </label>
+          <button className="buttonGreen inputAddButton" type="submit">
+            Modify
+          </button>
+        </form>
+      </div>
+      <div className="footer">
         <ButtonBack id="" route="/" text="back" />
-      </form>
+      </div>
     </div>
   );
 };

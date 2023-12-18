@@ -7,6 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useEffect } from "react";
+import { grey } from "@mui/material/colors";
 
 export default function TablePatientDetails({ risksDatas, notesDatas }) {
   useEffect(() => {}, [risksDatas, notesDatas]);
@@ -15,11 +16,16 @@ export default function TablePatientDetails({ risksDatas, notesDatas }) {
     risksDatas[0] &&
     notesDatas && (
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <div className="patientDetails">Patient details</div>
+        <Table
+          sx={{ minWidth: 300, width: "50%", mx: "auto" }}
+          aria-label="simple table"
+          title="Patient Details"
+        >
           <TableHead>
             <TableRow>
-              <TableCell>Age</TableCell>
-              <TableCell>Risk</TableCell>
+              <TableCell align="center">Age</TableCell>
+              <TableCell align="center">Risk</TableCell>
               <TableCell>Notes</TableCell>
             </TableRow>
           </TableHead>
@@ -28,10 +34,10 @@ export default function TablePatientDetails({ risksDatas, notesDatas }) {
               key={risksDatas[0].patId}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <TableCell align="center" component="th" scope="row">
                 {risksDatas[0].age}
               </TableCell>
-              <TableCell>{risksDatas[0].risk}</TableCell>
+              <TableCell align="center">{risksDatas[0].risk}</TableCell>
               <TableCell>
                 {notesDatas.map((n, index) => (
                   <p key={index}>- {n}</p>

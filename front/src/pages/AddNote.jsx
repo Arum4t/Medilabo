@@ -51,24 +51,33 @@ const AddNote = () => {
 
   return (
     <div>
-      <Header />
-      <form onSubmit={handleSubmit}>
-        <label>
-          Notes
-          <input
-            type="text"
-            name="note"
-            value={state.note}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">Add</button>
+      <div className="headerBlock">
+        <Header />
+      </div>
+      <div className="inputPage">
+        <form onSubmit={handleSubmit}>
+          <label>
+            <p>Notes</p>
+            <textarea
+              className="inputNote"
+              type="text"
+              name="note"
+              value={state.note}
+              onChange={handleChange}
+            />
+          </label>
+          <button className="buttonGreen inputAddButton" type="submit">
+            Add
+          </button>
+        </form>
+      </div>
+      <div className="footer">
         <ButtonBack
           id={patientId.id}
           route="/details/"
-          text="back to details"
+          text="Back to details"
         />
-      </form>
+      </div>
     </div>
   );
 };

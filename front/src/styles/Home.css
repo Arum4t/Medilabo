@@ -1,6 +1,7 @@
 .ButtonAdd {
   display: block;
   margin: auto;
+  margin-bottom: 10px;
 }
 .logo {
   margin: auto;
@@ -10,9 +11,108 @@
   flex-direction: column;
   align-items: center;
 }
+.footer {
+  margin-top: 20px;
+}
 .ButtonBack {
   display: block;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
+  margin-top: 30px;
+}
+.linkButton {
+  text-decoration: none;
+  color: black;
+}
+.linkButton:focus,
+.linkButton:hover,
+.linkButton:active {
+  text-decoration: none;
+}
+.buttonGreen {
+  background-color: #04aa6d;
+  border: none;
+  color: white;
+  padding: 5px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.buttonGreen:hover,
+.buttonBlue:hover,
+.buttonRed:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.24), 0 3px 6px 0 rgba(0, 0, 0, 0.19);
+}
+.buttonBlue {
+  background-color: #1a98c2;
+  border: none;
+  color: white;
+  padding: 5px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.buttonRed {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 5px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.inputPage {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+  margin-top: 5px;
+}
+.inputPage input {
+  width: 100%;
+  margin-top: 5px;
+}
+.inputAddButton {
+  display: block;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  margin-top: 10px;
+}
+.patientDetails {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  width: 130px;
+  border-radius: 2px;
+  padding-top: 2px;
+  margin-top: 20px;
+  margin-left: 480px;
+}
+.buttonDeleteConfirm {
+  margin-bottom: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.validationDeleteText {
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+.validationDelete {
+  margin-left: 20px;
+}
+.inputNote {
+  width: 300px;
+  height: 300px;
+}
+.inputPage p {
+  font-weight: bold;
 }

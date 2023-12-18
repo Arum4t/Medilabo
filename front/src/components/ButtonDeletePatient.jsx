@@ -15,12 +15,21 @@ const ButtonDeletePatient = ({ id }) => {
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>Delete</button>
+      <button className="buttonRed" onClick={() => setIsOpen(true)}>
+        Delete
+      </button>
       {isOpen && (
-        <div>
-          <p>Are you sure you want to delete this patient?</p>
-          <button onClick={handleDelete}>Yes, delete it</button>
-          <button onClick={() => setIsOpen(false)}>Cancel</button>
+        <div className="validationDelete">
+          <div className="validationDeleteText">Are you sure ?</div>
+          <button
+            className="buttonRed buttonDeleteConfirm"
+            onClick={handleDelete}
+          >
+            Yes
+          </button>
+          <button className="buttonBlue" onClick={() => setIsOpen(false)}>
+            Cancel
+          </button>
         </div>
       )}
     </>
