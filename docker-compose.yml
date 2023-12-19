@@ -5,6 +5,8 @@ services:
     build: ./front
     ports:
       - "3000:3000"
+    depends_on:
+      - gateway
   patient:
     build: ./patient
     ports:

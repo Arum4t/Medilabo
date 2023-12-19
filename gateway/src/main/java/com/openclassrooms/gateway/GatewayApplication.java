@@ -17,8 +17,8 @@ public class GatewayApplication {
 	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
 		return builder.routes()
 				.route("path_route", r -> r.path("/patients")
-						.uri("lb://patient:8080/patients"))
-				/*.route("risksById", t -> t.path("/risks/**")
+						.uri("http://patient:8080/patients"))
+				.route("risksById", t -> t.path("/risks/**")
 						.filters(rw -> rw.rewritePath("/risks/(?<segment>.*)", "/risks/${segment}"))
 						.uri("http://localhost:8082/risks/"))
 				.route("notesById", t -> t.path("/notes/**")
@@ -26,7 +26,7 @@ public class GatewayApplication {
 						.uri("http://notes:8081/notes/"))
 				.route("patientById", t -> t.path("/patients/**")
 						.filters(rw -> rw.rewritePath("/patients/(?<segment>.*)", "/patients/${segment}"))
-						.uri("http://patient:8080/patients/"))*/
+						.uri("http://patient:8080/patients/"))
 				.build();
 	}
 
