@@ -10,19 +10,15 @@ import Header from "../components/Header";
 const Details = () => {
   const [risksDatas, setRisksDatas] = useState([]);
   const [notesDatas, setNotesDatas] = useState([]);
-
   const patId = useParams();
-
   const getRisks = async () => {
     const todo = await axios.get("/risks/" + patId.id);
     setRisksDatas(todo.data);
   };
-
   const getNotes = async () => {
     const todo = await axios.get("/notes/" + patId.id);
     setNotesDatas(todo.data);
   };
-
   useEffect(() => {
     getRisks();
     getNotes();

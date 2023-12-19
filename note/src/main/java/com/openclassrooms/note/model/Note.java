@@ -12,10 +12,7 @@ public class Note {
     @Id
     @JsonIgnore
     private String id;
-
     private Integer patId;
-
     private String patient;
-
     private String note;
 }
