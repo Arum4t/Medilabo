@@ -50,10 +50,19 @@ A JavaScript library for building user interfaces
 
 ## Green code 
 
-Green coding is an approach that aims to reduce energy consumption and the environmental impact of software and web development.
+Green coding is an approach that aims to reduce energy consumption and environmental impact of software and web development.
 
 This app was build in this idea. Simple code, avoid useless method and reusable components in front for exemple.
 
-What we can do in this project ? 
+What more can we do in this project? 
 
-- Simplify the algorithm : multiple method to reach the same result to avoid one big method who do all the job.
+- Simplify the algorithm: One method, one job. Could have seperate age calculation. Avoid nested loop could help performance too
+- Improve memory footprint: Do not unnecessarily assign values to variables  
+Exemple: 
+>Factory:   
+>String var1 = getValue();     
+>return var1;  
+>Green:   
+>return getValue();
+- Use a preprocessor language scripting like SASS 
+- Simplify the table used to show the patient: MUI Data Grid should be lighter
