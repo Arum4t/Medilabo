@@ -50,4 +50,10 @@ A JavaScript library for building user interfaces
 
 ## Green code 
 
+Green coding is an approach that aims to reduce energy consumption and the environmental impact of software and web development.
 
+This app was build in this idea. Simple code, avoid useless method and reusable components in front for exemple.
+
+What we can do in this project ? 
+
+- Simplify the algorithm : multiple method to reach the same result to avoid one big method who do all the job.
